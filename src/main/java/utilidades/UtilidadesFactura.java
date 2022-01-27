@@ -45,4 +45,18 @@ public class UtilidadesFactura {
 
         return importeBase;
     }
+
+
+
+
+    public double calcularTotalAPagar(Factura factura){
+
+        double miImporte = factura.getImporteBase() - factura.getDescuento();
+        double pago = miImporte * (factura.getIva() / 100);
+        double pagoTotal = miImporte + pago;
+
+
+        return pagoTotal;
+
+    }
 }

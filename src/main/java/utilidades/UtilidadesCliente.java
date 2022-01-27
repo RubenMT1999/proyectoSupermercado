@@ -5,10 +5,31 @@
  */
 package utilidades;
 
-/**
- *
- * @author NitroPC
- */
+
+import modelos.Cliente;
+
 public class UtilidadesCliente {
-    
+
+    public UtilidadesCliente() {
+    }
+
+
+    public boolean esDniValido(Cliente cliente){
+
+        String miDni = cliente.getDni();
+        boolean prueba = false;
+        boolean devuelve = false;
+
+        for (int i = 0; i<miDni.length(); i++){
+            if (Character.isDigit(miDni.charAt(i))){
+                prueba = true;
+            }
+        }
+
+        if (miDni.length() == 8 && Character.isLetter(miDni.charAt(9)) && prueba == true){
+            devuelve = true;
+        }
+
+        return devuelve;
+    }
 }
