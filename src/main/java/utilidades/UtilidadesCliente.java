@@ -17,19 +17,32 @@ public class UtilidadesCliente {
     public boolean esDniValido(Cliente cliente){
 
         String miDni = cliente.getDni();
-        boolean prueba = false;
         boolean devuelve = false;
+        boolean prueba = false;
+        boolean prueba2 = false;
+        int contador = 0;
 
-        for (int i = 0; i<miDni.length(); i++){
+
+        for(int i=0; i<miDni.length()-1;i++){
             if (Character.isDigit(miDni.charAt(i))){
-                prueba = true;
+                contador = contador+1;
             }
         }
 
-        if (miDni.length() == 8 && Character.isLetter(miDni.charAt(9)) && prueba == true){
+
+        if(contador == 8){
+            prueba = true;
+        }
+
+        if (Character.isLetter(miDni.charAt(8))){
+            prueba2= true;
+        }
+
+
+        if(miDni.length()==9 && prueba==true && prueba2==true){
             devuelve = true;
         }
 
         return devuelve;
-    }
+}
 }

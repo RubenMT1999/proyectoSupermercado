@@ -25,6 +25,20 @@ public class Cliente {
         identificador = ++identificadorSiguiente;
     }
 
+
+    public Cliente(Cliente cliente){
+        identificador = ++identificadorSiguiente;
+        this.dni = cliente.getDni();
+        this.nombre = cliente.getNombre();
+        this.apellidos= cliente.getApellidos();
+        this.direccion= cliente.getDireccion();
+        this.tipo = cliente.getTipo();
+
+    }
+
+
+
+
     public int getIdentificador() {
         return identificador;
     }

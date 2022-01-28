@@ -20,6 +20,12 @@ public class Almacen {
         this.identificador = ++idSiguiente;
     }
 
+    public Almacen(Almacen almacen){
+        this.nombre= almacen.getNombre();
+        this.capacidad = almacen.getCapacidad();
+        this.identificador = ++idSiguiente;
+    }
+
     public int getIdentificador() {
         return identificador;
     }

@@ -65,7 +65,7 @@ public class pruebaV1 {
         Almacen almacen3 = new Almacen("Pepito",4000);
         Almacen almacen4 = new Almacen("Grande",10000);
 
-        Cliente cliente1 = new Cliente("48139453L","Rubén","Matías","Calle Pacheco",BEBIDA);
+        Cliente cliente1 = new Cliente("18139473L","Rubén","Matías","Calle Pacheco",BEBIDA);
 
         Producto producto1 = new Producto("JP69",1.50,"Red bull", LocalDate.of(2015,10,11),BEBIDA,almacen3);
 

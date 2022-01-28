@@ -29,6 +29,19 @@ public class Producto {
         identificador = ++identificadorSiguiente;
     }
 
+
+    public Producto(Producto producto){
+        identificador = ++identificadorSiguiente;
+        this.codigo = producto.getCodigo();
+        this.descripcion = producto.getDescripcion();
+        this.fechaCaducidad= producto.getFechaCaducidad();
+        this.tipo= producto.getTipo();
+        this.precio = producto.getPrecio();
+        this.almacen = producto.getAlmacen();
+    }
+
+
+
     public  int getIdentificador() {
         return identificador;
     }
