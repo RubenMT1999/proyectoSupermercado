@@ -2,10 +2,7 @@
 package main;
 
 import modelos.*;
-import utilidades.UtilidadesCliente;
-import utilidades.UtilidadesFactura;
-import utilidades.UtilidadesLineaFactura;
-import utilidades.UtilidadesProducto;
+import utilidades.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -14,6 +11,7 @@ import java.util.List;
 
 import static modelos.TipoProducto.BEBIDA;
 import static modelos.TipoProducto.DROGUERIA;
+import static utilidades.UtilidadesEmpresa.getEmpleadosPorContrato;
 
 
 public class pruebaV1 {
@@ -108,8 +106,31 @@ public class pruebaV1 {
 
         //Prueba ej 6.
 
-        UtilidadesCliente uc1 = new UtilidadesCliente();
-        System.out.println(uc1.esDniValido(cliente1));
+        //UtilidadesCliente uc1 = new UtilidadesCliente();
+        //System.out.println(uc1.esDniValido(cliente1));
+
+
+
+        Contrato miContrato1 = new Contrato(1200,TipoContrato.OBRAYSERVICIO);
+
+        Empleado empleado1 = new Empleado("48120454T","Pedro","Tejero","Calle Cóndor",
+                "657984501",null,miContrato1);
+        Empleado empleado2 = new Empleado("48120499Q","Antonio","López","Calle Abeja",
+                "666418900",null,miContrato1);
+        List<Empleado> misEmpleados = new ArrayList<>();
+        misEmpleados.add(empleado1);
+        misEmpleados.add(empleado2);
+
+        Empresa empresa1 = new Empresa("HJP01",misEmpleados,TipoEmpresa.STARTUP);
+
+        empleado1.setEmpresa(empresa1);
+        empleado2.setEmpresa(empresa1);
+        empresa1.setEmpleados(misEmpleados);
+
+
+
+        System.out.println(getEmpleadosPorContrato(empresa1,TipoContrato.OBRAYSERVICIO));
+
 
     }
     
