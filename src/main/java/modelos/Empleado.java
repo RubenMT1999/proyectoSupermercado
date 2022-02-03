@@ -2,7 +2,7 @@ package modelos;
 
 import java.util.Objects;
 
-public class Empleado {
+public class Empleado implements Comparable<Empleado> {
 
     private int identificador;
     private static int idSiguiente;
@@ -133,6 +133,11 @@ public class Empleado {
     @Override
     public int hashCode() {
         return Objects.hash(identificador, dni, nombre, apellidos, direccion, numTelefono, empresa, contrato);
+    }
+
+    @Override
+    public int compareTo(Empleado o) {
+        return (int) (this.getContrato().getSalarioBase() - o.getContrato().getSalarioBase());
     }
 }
 

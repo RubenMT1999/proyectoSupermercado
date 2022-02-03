@@ -1,12 +1,13 @@
 package utilidades;
 
+import modelos.Contrato;
 import modelos.Empleado;
 import modelos.Empresa;
 import modelos.TipoContrato;
 
 import java.util.*;
 
-public class UtilidadesEmpresa {
+public class UtilidadesEmpresa{
 
     public UtilidadesEmpresa() {
     }
@@ -28,7 +29,7 @@ public class UtilidadesEmpresa {
 
 
 
-    public List<Empleado> getMileuristasOrdenadosPorSalario(Empresa empresa){
+    public static List<Empleado> getMileuristasOrdenadosPorSalario(Empresa empresa){
 
         List<Empleado> miLista = new ArrayList<>();
 
@@ -37,7 +38,10 @@ public class UtilidadesEmpresa {
                 miLista.add(e);
             }
         }
-        Comparator<Integer> comparador = Collections.reverseOrder();
-        Collections.sort(miLista,comparador);
+        Collections.sort(miLista,Collections.reverseOrder());
+        return miLista;
+
     }
+
+
 }

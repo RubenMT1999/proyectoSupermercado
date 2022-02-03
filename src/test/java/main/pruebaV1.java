@@ -112,26 +112,38 @@ public class pruebaV1 {
 
 
         Contrato miContrato1 = new Contrato(1200,TipoContrato.OBRAYSERVICIO);
+        Contrato miContrato2 = new Contrato(1400,TipoContrato.OBRAYSERVICIO);
+        Contrato miContrato3 = new Contrato(2000,TipoContrato.TEMPORAL);
+        Contrato miContrato4 = new Contrato(1700,TipoContrato.INDEFINIDO);
 
         Empleado empleado1 = new Empleado("48120454T","Pedro","Tejero","Calle Cóndor",
                 "657984501",null,miContrato1);
         Empleado empleado2 = new Empleado("48120499Q","Antonio","López","Calle Abeja",
-                "666418900",null,miContrato1);
+                "666418900",null,miContrato2);
+        Empleado empleado3 = new Empleado("48120499Q","Antonio","López","Calle Abeja",
+                "666418900",null,miContrato3);
+        Empleado empleado4 = new Empleado("48120499Q","Antonio","López","Calle Abeja",
+                "666418900",null,miContrato4);
+
         List<Empleado> misEmpleados = new ArrayList<>();
         misEmpleados.add(empleado1);
         misEmpleados.add(empleado2);
+        misEmpleados.add(empleado3);
+        misEmpleados.add(empleado4);
 
         Empresa empresa1 = new Empresa("HJP01",misEmpleados,TipoEmpresa.STARTUP);
 
         empleado1.setEmpresa(empresa1);
         empleado2.setEmpresa(empresa1);
+        empleado3.setEmpresa(empresa1);
+        empleado4.setEmpresa(empresa1);
         empresa1.setEmpleados(misEmpleados);
 
 
 
-        System.out.println(getEmpleadosPorContrato(empresa1,TipoContrato.OBRAYSERVICIO));
+        //System.out.println(getEmpleadosPorContrato(empresa1,TipoContrato.OBRAYSERVICIO));
 
-
+        System.out.println(UtilidadesEmpresa.getMileuristasOrdenadosPorSalario(empresa1));
     }
     
 }
