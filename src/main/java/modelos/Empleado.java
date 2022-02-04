@@ -116,7 +116,7 @@ public class Empleado implements Comparable<Empleado> {
                 ", apellidos='" + apellidos + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", numTelefono='" + numTelefono + '\'' +
-                ", empresa=" + empresa.toString() +
+
                 ", contrato=" + contrato.toString() +
                 '}';
     }
@@ -132,7 +132,7 @@ public class Empleado implements Comparable<Empleado> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(identificador, dni, nombre, apellidos, direccion, numTelefono, empresa, contrato);
+        return Objects.hash(identificador, dni, nombre, apellidos, direccion, numTelefono);
     }
 
     @Override

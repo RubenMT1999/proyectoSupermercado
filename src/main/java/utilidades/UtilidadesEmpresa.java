@@ -97,14 +97,14 @@ public class UtilidadesEmpresa{
 
 
         Map<TipoContrato,List<Empleado>> miMapa1 = new HashMap<>();
-        Map<Empresa,HashMap<TipoContrato,List<Empleado>>> miMapa2 = new HashMap<>();
+        Map<Empresa,Map<TipoContrato,List<Empleado>>> miMapa2 = new HashMap<>();
 
 
         for (Empresa e : empresas){
-            for (Empleado i : e.getEmpleados()){
-                miMapa1.put(i.getContrato().getTipoContrato(),e.getEmpleados());
+
+                miMapa1= e.getEmpleados().stream().collect(Collectors.groupingBy(p -> p.getContrato().getTipoContrato()));
                 miMapa2.put(e,miMapa1);
-            }
+
         }
 
         return miMapa2;

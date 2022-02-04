@@ -84,6 +84,6 @@ public class Empresa {
 
     @Override
     public int hashCode() {
-        return Objects.hash(identificador, codigoEmpresa, empleados, tipoEmpresa);
+        return Objects.hash(identificador, codigoEmpresa, tipoEmpresa);
     }
 }
