@@ -85,27 +85,29 @@ public class UtilidadesEmpresa{
             miLista.add(e);
         }
 
-        Map<TipoContrato, List<Empleado>> miMapa = miLista.stream().collect(Collectors.groupingBy(empleado -> empleado.getContrato().getTipoContrato()));
+        Map<TipoContrato, List<Empleado>> miMapa = miLista.stream().collect(Collectors.groupingBy
+                (empleado -> empleado.getContrato().getTipoContrato()));
 
         return miMapa;
     }
 
 
 
-    public Map<Empresa, Map<TipoContrato, List<Empleado>>> getEmpleadosPorTipoContrato(List<Empresa> empresas){
+    public static Map<Empresa, Map<TipoContrato, List<Empleado>>> getEmpleadosPorTipoContratoConLista(List<Empresa> empresas){
 
-        List<Empleado> milista = new ArrayList<>();
+
+        Map<TipoContrato,List<Empleado>> miMapa1 = new HashMap<>();
+        Map<Empresa,HashMap<TipoContrato,List<Empleado>>> miMapa2 = new HashMap<>();
+
 
         for (Empresa e : empresas){
             for (Empleado i : e.getEmpleados()){
-                milista.add(i);
+                miMapa1.put(i.getContrato().getTipoContrato(),e.getEmpleados());
+                miMapa2.put(e,miMapa1);
             }
         }
 
-
-
-        Map<Empresa, Map<TipoContrato, List<Empleado>>> miMapa = empresas.stream().collect(Collectors.groupingBy(e -> ))
-
+        return miMapa2;
     }
 
 
