@@ -186,7 +186,7 @@ public class pruebaV1 {
         //System.out.println(UtilidadesEmpresa.getEmpleadosPorTipoContrato(empresa1));
 
         //Prueba ej 3f V2
-        System.out.println(UtilidadesEmpresa.getEmpleadosPorTipoContratoConLista(misEmpresas));
+        //System.out.println(UtilidadesEmpresa.getEmpleadosPorTipoContratoConLista(misEmpresas));
     }
     
 }

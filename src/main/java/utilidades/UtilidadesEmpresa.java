@@ -71,6 +71,8 @@ public class UtilidadesEmpresa{
 
         Collections.sort(miLista,Collections.reverseOrder());
 
+        //miLista.sort(Comparator.comparing(em -> em.getContrato().getSalarioBase()));
+        //miLista.get(miLista.size()-1);
 
         return miLista.get(0);
 
