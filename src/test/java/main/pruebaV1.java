@@ -63,7 +63,7 @@ public class pruebaV1 {
         Almacen almacen3 = new Almacen("Pepito",4000);
         Almacen almacen4 = new Almacen("Grande",10000);
 
-        Cliente cliente1 = new Cliente("18139473L","Rubén","Matías","Calle Pacheco",BEBIDA);
+        Cliente cliente1 = new Cliente("18139473L","Rubén","Matías","Calle Pacheco",TipoCliente.EMPRESA);
 
         Producto producto1 = new Producto("JP69",1.50,"Red bull", LocalDate.of(2015,10,11),BEBIDA,almacen3);
 
@@ -111,9 +111,9 @@ public class pruebaV1 {
 
 
 
-        Contrato miContrato1 = new Contrato(1200,TipoContrato.OBRAYSERVICIO);
+        Contrato miContrato1 = new Contrato(1200,TipoContrato.PRACTICAS);
         Contrato miContrato2 = new Contrato(1400,TipoContrato.OBRAYSERVICIO);
-        Contrato miContrato3 = new Contrato(2000,TipoContrato.TEMPORAL);
+        Contrato miContrato3 = new Contrato(2000,TipoContrato.PRACTICAS);
         Contrato miContrato4 = new Contrato(3400,TipoContrato.INDEFINIDO);
 
         Contrato miContrato5 = new Contrato(2300,TipoContrato.INDEFINIDO);
@@ -146,12 +146,12 @@ public class pruebaV1 {
         misEmpleados.add(empleado4);
 
         List<Empleado> misEmpleados2 = new ArrayList<>();
-        misEmpleados.add(empleado5);
-        misEmpleados.add(empleado6);
-        misEmpleados.add(empleado7);
-        misEmpleados.add(empleado8);
+        misEmpleados2.add(empleado5);
+        misEmpleados2.add(empleado6);
+        misEmpleados2.add(empleado7);
+        misEmpleados2.add(empleado8);
 
-        Empresa empresa1 = new Empresa("HJP01",misEmpleados,TipoEmpresa.STARTUP);
+        Empresa empresa1 = new Empresa("HJP01",misEmpleados,TipoEmpresa.PYME);
         Empresa empresa2 = new Empresa("KSK29",misEmpleados2,TipoEmpresa.NACIONAL);
 
         empleado1.setEmpresa(empresa1);
@@ -164,7 +164,6 @@ public class pruebaV1 {
         empleado6.setEmpresa(empresa2);
         empleado7.setEmpresa(empresa2);
         empleado8.setEmpresa(empresa2);
-        empresa2.setEmpleados(misEmpleados2);
 
 
         //Prueba ej 3a V2
@@ -187,6 +186,14 @@ public class pruebaV1 {
 
         //Prueba ej 3f V2
         //System.out.println(UtilidadesEmpresa.getEmpleadosPorTipoContratoConLista(misEmpresas));
+
+
+
+        //Prueba ej 2a V3
+        //System.out.println(UtilidadesEmpresa.getEmpleadosPymePracticas(misEmpresas));
+
+        //Prueba ej 2b V3
+        System.out.println(UtilidadesEmpresa.getLosMejorPagadosPorEmpresa(misEmpresas));
     }
     
 }

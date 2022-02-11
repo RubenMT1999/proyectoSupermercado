@@ -1,9 +1,6 @@
 package utilidades;
 
-import modelos.Contrato;
-import modelos.Empleado;
-import modelos.Empresa;
-import modelos.TipoContrato;
+import modelos.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -113,4 +110,73 @@ public class UtilidadesEmpresa{
     }
 
 
+
+
+    public static List<Empleado> getEmpleadosPymePracticas(List<Empresa> empresas){
+
+        List<Empleado> miLista = new ArrayList<>();
+
+        for (Empresa e : empresas){
+            for (Empleado i : e.getEmpleados()){
+                if (i.getContrato().getTipoContrato().equals(TipoContrato.PRACTICAS)
+                        && e.getTipoEmpresa().equals(TipoEmpresa.PYME)){
+                    miLista.add(i);
+                }
+            }
+        }
+        return miLista;
+    }
+
+
+
+
+    public static Map<Empresa,Empleado>  getLosMejorPagadosPorEmpresa(List<Empresa> empresas){
+
+        List<Empleado> miLista = new ArrayList<>();
+        List<Empleado> miLista2 = new ArrayList<>();
+
+
+
+
+        for(Empresa e : empresas){
+            for(Empleado i : e.getEmpleados()){
+
+                miLista.add(i);
+            }
+
+            Collections.sort(miLista,Collections.reverseOrder());
+            miLista2.add(miLista.get(0));
+            miLista.clear();
+        }
+
+        Map<Empresa, Empleado> miMapa = new HashMap<>() ;
+
+        miLista2.stream().forEach(e-> {
+            miMapa.put(e.getEmpresa(), e);
+        });
+
+        return miMapa;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
