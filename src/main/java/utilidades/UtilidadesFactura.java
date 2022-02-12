@@ -49,7 +49,7 @@ public class UtilidadesFactura {
 
 
 
-    public double calcularTotalAPagar(Factura factura){
+    public static double calcularTotalAPagar(Factura factura){
 
         double miImporte = factura.getImporteBase() - factura.getDescuento();
         double pago = miImporte * (factura.getIva() / 100);

@@ -64,6 +64,7 @@ public class pruebaV1 {
         Almacen almacen4 = new Almacen("Grande",10000);
 
         Cliente cliente1 = new Cliente("18139473L","Rubén","Matías","Calle Pacheco",TipoCliente.EMPRESA);
+        Cliente cliente2 = new Cliente("37268193P","Antonio","Ruiz","Calle Chicle",TipoCliente.PARTICULAR);
 
         Producto producto1 = new Producto("JP69",1.50,"Red bull", LocalDate.of(2015,10,11),BEBIDA,almacen3);
 
@@ -75,8 +76,14 @@ public class pruebaV1 {
         miLista1.add(lineaFactura1);
         miLista1.add(lineaFactura2);
 
-        Factura factura1 = new Factura("H45",0,2.5,21,1.2,LocalDate.of(2020,04,9),
+
+
+        Factura factura1 = new Factura("H45",0,2.5,21,3.4,LocalDate.of(2020,04,9),
                 LocalDate.of(2020,8,12),true,miLista1,cliente1);
+        Factura factura2 = new Factura("K01",0,4.25,21,6,LocalDate.of(2020,04,9),
+                LocalDate.of(2020,8,12),true,miLista1,cliente1);
+        Factura factura3 = new Factura("L90",0,2.5,21,3.1,LocalDate.of(2020,04,9),
+                LocalDate.of(2020,8,12),true,miLista1,cliente2);
 
 
         UtilidadesFactura utilidad1 = new UtilidadesFactura();
@@ -189,11 +196,22 @@ public class pruebaV1 {
 
 
 
-        //Prueba ej 2a V3
+        //Prueba ej 2a V4
         //System.out.println(UtilidadesEmpresa.getEmpleadosPymePracticas(misEmpresas));
 
-        //Prueba ej 2b V3
-        System.out.println(UtilidadesEmpresa.getLosMejorPagadosPorEmpresa(misEmpresas));
+        //Prueba ej 2b V4
+        //System.out.println(UtilidadesEmpresa.getLosMejorPagadosPorEmpresa(misEmpresas));
+
+
+        //Prueba ej 3a V4
+
+        List<Factura> listaFacturas = new ArrayList<>();
+        listaFacturas.add(factura2);
+        listaFacturas.add(factura1);
+        listaFacturas.add(factura3);
+
+        System.out.println(UtilidadesEmpresa.gastoTotalCliente(listaFacturas,cliente1));
     }
+
     
 }

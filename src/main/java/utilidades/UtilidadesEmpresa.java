@@ -158,6 +158,31 @@ public class UtilidadesEmpresa{
         return miMapa;
     }
 
+
+
+    public static Double gastoTotalCliente(List<Factura> facturas, Cliente cliente){
+
+        List<Factura> miLista = new ArrayList<>();
+
+        double cantidad = 0;
+
+
+        for (Factura f : facturas){
+            if (f.getCliente().equals(cliente)){
+                miLista.add(f);
+            }
+        }
+
+        for (Factura m : miLista){
+            cantidad = cantidad + m.getTotalAPagar();
+        }
+
+
+
+        return cantidad;
+    }
+
+
 }
 
 
