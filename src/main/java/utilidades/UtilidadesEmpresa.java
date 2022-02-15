@@ -174,7 +174,9 @@ public class UtilidadesEmpresa{
         }
 
         for (Factura m : miLista){
-            cantidad = cantidad + m.getTotalAPagar();
+            double prueba = UtilidadesFactura.calcularTotalAPagar(m);
+            cantidad = cantidad + prueba;
+            prueba = 0;
         }
 
 
