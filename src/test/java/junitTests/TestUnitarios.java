@@ -1,6 +1,7 @@
 package junitTests;
 
 import modelos.*;
+import org.junit.Before;
 import org.junit.Test;
 import utilidades.UtilidadesEmpresa;
 import utilidades.UtilidadesFactura;
@@ -16,6 +17,44 @@ import java.util.stream.Collectors;
 public class TestUnitarios {
 
 
+    private List<Empleado> empleadosPrueba = new ArrayList<>();
+    private Empleado emp1 = null;
+    private Empleado emp2 = null;
+    private Empleado emp3 = null;
+    private Empleado emp4 = null;
+    private Empresa empresa1 = null;
+
+    @Before
+    public void inicializardato(){
+
+    Contrato miContrato1 = new Contrato(1200,TipoContrato.PRACTICAS);
+    Contrato miContrato2 = new Contrato(1400,TipoContrato.OBRAYSERVICIO);
+    Contrato miContrato3 = new Contrato(2000,TipoContrato.PRACTICAS);
+    Contrato miContrato4 = new Contrato(3400,TipoContrato.INDEFINIDO);
+
+    Empleado empleado1 = new Empleado("48120454T","Pedro","Fernández","Calle Cóndor",
+            "657984501",null,miContrato1);
+    Empleado empleado2 = new Empleado("48120499Q","Pepe","López","Calle Abeja",
+            "678415609",null,miContrato2);
+    Empleado empleado3 = new Empleado("48120499Q","Rocio","Rodiguez","Calle Alcalá",
+            "658019934",null,miContrato3);
+    Empleado empleado4 = new Empleado("48120499Q","Triana","López","Calle Águila",
+            "611458912",null,miContrato4);
+
+    List<Empleado> misEmpleados = new ArrayList<>();
+        misEmpleados.add(empleado1);
+        misEmpleados.add(empleado2);
+        misEmpleados.add(empleado3);
+        misEmpleados.add(empleado4);
+        empleadosPrueba.addAll(misEmpleados);
+        emp1= empleado1;
+        emp2 = empleado2;
+        emp3 = empleado3;
+        emp4 = empleado4;
+
+        Empresa empresaprueba = new Empresa("HJP01",misEmpleados,TipoEmpresa.PYME);
+        empresa1 = empresaprueba;
+    }
 
 
     /* UtilidadesFactura */
@@ -414,5 +453,58 @@ public class TestUnitarios {
 
     }
 
+
+
+
+
+    @Test
+    public void testFondoSalarialEmpresa(){
+
+
+
+        Empresa empresa1 = new Empresa("HJP01",empleadosPrueba,TipoEmpresa.PYME);
+
+        Double prueba = UtilidadesEmpresa.fondoSalarialEmpresa(empresa1);
+        Double prueba2 = 8000.00;
+
+        assertEquals(prueba2,prueba);
+
+
+    }
+
+
+
+
+    @Test
+    public void testMileuristasPorSalario(){
+
+
+        Empresa empresa1 = new Empresa("HJP01",empleadosPrueba,TipoEmpresa.PYME);
+
+        List<Empleado> misEmp = UtilidadesEmpresa.getMileuristasOrdenadosPorSalario(empresa1);
+        List<Empleado> misEmp2 = new ArrayList<>();
+
+        misEmp2.add(emp4);
+        misEmp2.add(emp3);
+        misEmp2.add(emp2);
+        misEmp2.add(emp1);
+
+        assertEquals(misEmp2,misEmp);
+    }
+
+
+    @Test
+    public void testEmpleadosPorContrato(){
+
+        List<Empleado> miLista1 = UtilidadesEmpresa.getEmpleadosPorContrato(empresa1,TipoContrato.PRACTICAS);
+        List<Empleado> miLista2 = new ArrayList<>();
+
+        miLista2.add(emp1);
+        miLista2.add(emp3);
+
+
+
+        assertEquals(miLista2,miLista1);
+    }
 
 }
