@@ -15,7 +15,7 @@ public class UtilidadesFactura {
 
 
 
-    public boolean esFacturaVencida(Factura factura){
+    public static boolean esFacturaVencida(Factura factura){
         LocalDate fecha = factura.getFechaVencimiento();
         boolean devuelve = false;
 
@@ -30,7 +30,7 @@ public class UtilidadesFactura {
 
 
 
-    public double calcularBaseFactura(Factura factura){
+    public static double calcularBaseFactura(Factura factura){
 
         List<LineaFactura> miLista = factura.getLineaFactura();
         double importeBase = 0;

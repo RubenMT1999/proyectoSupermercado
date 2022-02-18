@@ -14,7 +14,7 @@ public class UtilidadesCliente {
     }
 
 
-    public boolean esDniValido(Cliente cliente){
+    public static boolean esDniValido(Cliente cliente){
 
         String miDni = cliente.getDni();
         boolean devuelve = false;

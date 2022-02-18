@@ -21,7 +21,7 @@ public class UtilidadesProducto {
 
 
 
-    public List<Producto> getPorTipo(List<Producto> productos, TipoProducto tipo){
+    public static List<Producto> getPorTipo(List<Producto> productos, TipoProducto tipo){
 
         List<Producto> miLista = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class UtilidadesProducto {
 
 
 
-    public List<Producto> getPorAlmacen(List<Producto> productos, Almacen almacen){
+    public static List<Producto> getPorAlmacen(List<Producto> productos, Almacen almacen){
 
         List<Producto> miLista = new ArrayList<>();
 

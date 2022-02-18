@@ -3,15 +3,14 @@ package junitTests;
 import modelos.*;
 import org.junit.Before;
 import org.junit.Test;
-import utilidades.UtilidadesEmpresa;
-import utilidades.UtilidadesFactura;
+import utilidades.*;
+
+
+import static modelos.TipoProducto.BEBIDA;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TestUnitarios {
@@ -23,25 +22,56 @@ public class TestUnitarios {
     private Empleado emp3 = null;
     private Empleado emp4 = null;
     private Empresa empresa1 = null;
+    private Factura miFactura1 = null;
+    private List<Producto> misProductos = new ArrayList<>();
+    private Producto miProd1 = null;
+    private Producto miProd2 = null;
+    private Almacen miAlm1 = null;
+    private Cliente miClien1 = null;
 
     @Before
     public void inicializardato(){
 
-    Contrato miContrato1 = new Contrato(1200,TipoContrato.PRACTICAS);
-    Contrato miContrato2 = new Contrato(1400,TipoContrato.OBRAYSERVICIO);
-    Contrato miContrato3 = new Contrato(2000,TipoContrato.PRACTICAS);
-    Contrato miContrato4 = new Contrato(3400,TipoContrato.INDEFINIDO);
+        Almacen almacen3 = new Almacen("Pepito",4000);
+        Almacen almacen4 = new Almacen("Grande",10000);
 
-    Empleado empleado1 = new Empleado("48120454T","Pedro","Fernández","Calle Cóndor",
-            "657984501",null,miContrato1);
-    Empleado empleado2 = new Empleado("48120499Q","Pepe","López","Calle Abeja",
-            "678415609",null,miContrato2);
-    Empleado empleado3 = new Empleado("48120499Q","Rocio","Rodiguez","Calle Alcalá",
-            "658019934",null,miContrato3);
-    Empleado empleado4 = new Empleado("48120499Q","Triana","López","Calle Águila",
-            "611458912",null,miContrato4);
+        Cliente cliente1 = new Cliente("18139473L","Rubén","Matías","Calle Pacheco",TipoCliente.EMPRESA);
+        Cliente cliente2 = new Cliente("37268193P","Antonio","Ruiz","Calle Chicle",TipoCliente.PARTICULAR);
 
-    List<Empleado> misEmpleados = new ArrayList<>();
+        Producto producto1 = new Producto("JP69",1.50,"Red bull", LocalDate.of(2015,10,11),BEBIDA,almacen3);
+
+        Producto producto2 = new Producto("JK01",2.25,"Monster", LocalDate.of(2018,10,11),BEBIDA,almacen4);
+
+        LineaFactura lineaFactura1= new LineaFactura(null, producto1,2);
+        LineaFactura lineaFactura2= new LineaFactura(null, producto2,3);
+        List<LineaFactura> miLista1 = new ArrayList<>();
+        miLista1.add(lineaFactura1);
+        miLista1.add(lineaFactura2);
+
+
+
+        Factura factura1 = new Factura("H45",0,2.5,21,3.4,LocalDate.of(2020,04,9),
+                LocalDate.of(2020,8,12),true,miLista1,cliente1);
+        Factura factura2 = new Factura("K01",0,4.25,21,6,LocalDate.of(2020,04,9),
+                LocalDate.of(2020,8,12),true,miLista1,cliente1);
+        Factura factura3 = new Factura("L90",0,2.5,21,3.1,LocalDate.of(2020,04,9),
+                LocalDate.of(2020,8,12),true,miLista1,cliente2);
+
+        Contrato miContrato1 = new Contrato(1200,TipoContrato.PRACTICAS);
+        Contrato miContrato2 = new Contrato(1400,TipoContrato.OBRAYSERVICIO);
+        Contrato miContrato3 = new Contrato(2000,TipoContrato.PRACTICAS);
+        Contrato miContrato4 = new Contrato(3400,TipoContrato.INDEFINIDO);
+
+        Empleado empleado1 = new Empleado("48120454T","Pedro","Fernández","Calle Cóndor",
+                "657984501",null,miContrato1);
+        Empleado empleado2 = new Empleado("48120499Q","Pepe","López","Calle Abeja",
+                "678415609",null,miContrato2);
+        Empleado empleado3 = new Empleado("48120499Q","Rocio","Rodiguez","Calle Alcalá",
+                "658019934",null,miContrato3);
+        Empleado empleado4 = new Empleado("48120499Q","Triana","López","Calle Águila",
+                "611458912",null,miContrato4);
+
+        List<Empleado> misEmpleados = new ArrayList<>();
         misEmpleados.add(empleado1);
         misEmpleados.add(empleado2);
         misEmpleados.add(empleado3);
@@ -54,6 +84,57 @@ public class TestUnitarios {
 
         Empresa empresaprueba = new Empresa("HJP01",misEmpleados,TipoEmpresa.PYME);
         empresa1 = empresaprueba;
+        miFactura1 = factura1;
+
+        misProductos.add(producto1);
+        misProductos.add(producto2);
+        miProd1 = producto1;
+        miProd2 = producto2;
+
+        miAlm1 = almacen3;
+
+        miClien1 = cliente1;
+
+    }
+
+
+
+
+    /* UtilidadesProducto */
+
+    @Test
+    public void testPorTipo(){
+
+        List<Producto> miLista1 = UtilidadesProducto.getPorTipo(misProductos, BEBIDA);
+        List<Producto> miLista2 = new ArrayList<>();
+        miLista2.add(miProd1);
+        miLista2.add(miProd2);
+        assertEquals(miLista2,miLista1);
+    }
+
+
+    @Test
+    public void testPorAlmacen(){
+
+        List<Producto> miLista1 = UtilidadesProducto.getPorAlmacen(misProductos, miAlm1);
+        List<Producto> miLista2 = new ArrayList<>();
+        miLista2.add(miProd1);
+
+        assertEquals(miLista2,miLista1);
+    }
+
+
+
+    /* UtilidadesCliente */
+
+    @Test
+    public void testDniValido(){
+
+        boolean prueba1 = UtilidadesCliente.esDniValido(miClien1);
+        boolean prueba2 = true;
+
+        assertEquals(prueba2,prueba1);
+
     }
 
 
@@ -72,6 +153,28 @@ public class TestUnitarios {
 
         assertEquals(prueba2,prueba);
 
+    }
+
+
+    @Test
+    public void testCalculoBaseFactura(){
+
+        Double pruebaFactura1 = UtilidadesFactura.calcularBaseFactura(miFactura1);
+        Double pruebaFacura2 = 9.75;
+        assertEquals(pruebaFacura2,pruebaFactura1);
+
+
+    }
+
+
+
+    @Test
+    public void esFacturaVencida(){
+
+        boolean miPrueba1 = UtilidadesFactura.esFacturaVencida(miFactura1);
+        boolean miPrueba2 = false;
+
+        assertEquals(miPrueba2,miPrueba1);
     }
 
 
@@ -506,5 +609,9 @@ public class TestUnitarios {
 
         assertEquals(miLista2,miLista1);
     }
+
+
+
+
 
 }
