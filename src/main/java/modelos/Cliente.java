@@ -3,7 +3,15 @@ package modelos;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class Cliente extends Persona{
+
+
+    /**
+     *
+     */
 
     private int identificador;
     private static int identificadorSiguiente;

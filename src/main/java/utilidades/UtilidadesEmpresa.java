@@ -7,9 +7,18 @@ import java.util.stream.Collectors;
 
 public class UtilidadesEmpresa{
 
+
+
+
     public UtilidadesEmpresa() {
     }
 
+
+    /**
+     * @param empresa
+     * @param tipoContrato
+     * @return
+     */
     public static List<Empleado> getEmpleadosPorContrato(Empresa empresa, TipoContrato tipoContrato){
 
         List<Empleado> miLista = new ArrayList<>();
@@ -24,6 +33,7 @@ public class UtilidadesEmpresa{
         return  miLista;
 
     }
+
 
 
 
@@ -76,7 +86,10 @@ public class UtilidadesEmpresa{
     }
 
 
-
+    /**
+     * @param empresas
+     * @return
+     */
     public static Map<TipoContrato, List<Empleado>> getEmpleadosPorTipoContrato(Empresa empresas){
 
         List<Empleado> miLista = new ArrayList<>();
